@@ -8,7 +8,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: subscribers_db
+      MYSQL_DATABASE: locationsearch_db
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
