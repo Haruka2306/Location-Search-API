@@ -9,11 +9,11 @@
 そこで、商品の位置情報検索機能を持つ簡単なアプリを自作しようと思った。
 
 ## 使用技術
-* バックエンド：Java, SpringBoot
-* その他：
-  * MySQL
-  * Docker
-  * 自動テスト（実装予定）
+* Java 17
+* Spring Boot 3.1.3
+* MySQL 8.0.34
+* Docker 24.0.5
+  
 
 ## API概略図
 ![Location-Search-API drawio (2)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/6c63ec64-3362-459e-aab5-e74e56e4499b)
