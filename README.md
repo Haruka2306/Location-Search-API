@@ -1,21 +1,26 @@
-## Location-Search-API
+# Location-Search-API
 
-### API概要
+## API概要
 店舗で、探している商品が含まれるコーナー名を検索すると商品が置いてあるロケーション名とおおよその位置情報を知ることができます。
 
-### 作成背景
+## 作成背景
 勤務していた店舗では、毎週商品の位置が変更しており、お客様から商品の場所を聞かれることがかなり多かった。
 また、従業員も毎週商品の位置を把握するのが大変だった。
 そこで、商品の位置情報検索機能を持つ簡単なアプリを自作しようと思った。
 
-### 使用技術
+## 使用技術
 * バックエンド：Java, SpringBoot
 * その他：
   * MySQL
   * Docker
   * 自動テスト（実装予定）
 
-### DB登録済みデータ
+## API概略図
+![Location-Search-API drawio (2)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/6c63ec64-3362-459e-aab5-e74e56e4499b)
+
+
+
+## DB登録済みデータ
 | id | corner | locationName | place | creator|
 | ---- | ---- | ---- | ---- |----|
 | 1 | food | A | left-back | yamada |
@@ -26,7 +31,7 @@
 | 6 | toy | F | right-front | yamada |
 
 
-### 動作確認
+## 動作確認
 * 検索したcorner名に紐づいたlocationNameとplaceを取得する。
 ####
      curl --location 'http://localhost:8080/location-search?corner=food'
