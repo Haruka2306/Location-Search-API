@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.Map;
 
 @RestControllerAdvice
-public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
+public class LocationSearchExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Map<String, String>> badRequestException(ConstraintViolationException e, HttpServletRequest request) {
         Map<String, String> body = Map.of(
@@ -22,8 +22,8 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         return new ResponseEntity(body, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(CustomExceptionHandler.class)
-    public ResponseEntity<Map<String, String>> badRequestException(CustomExceptionHandler e, HttpServletRequest request) {
+    @ExceptionHandler(NoCornerFoundException.class)
+    public ResponseEntity<Map<String, String>> badRequestException(NoCornerFoundException e, HttpServletRequest request) {
         Map<String, String> body = Map.of(
                 "status", String.valueOf(HttpStatus.BAD_REQUEST.value()),
                 "error", HttpStatus.BAD_REQUEST.getReasonPhrase(),

@@ -1,7 +1,7 @@
 package com.example.crudapi.service;
 
-import com.example.crudapi.entity.LocationSearch;
+import com.example.crudapi.entity.Location;
 
 public interface LocationSearchService {
-    LocationSearch findByCorner(String corner);
+    Location findByCorner(String corner);
 }

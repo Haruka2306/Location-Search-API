@@ -2,7 +2,12 @@ package com.example.crudapi.entity;
 
 import com.example.crudapi.dto.LocationSearchDto;
 
-public class LocationSearch {
+public class Location {
+
+    private String corner;
+    private String locationName;
+    private String place;
+    private String creator;
 
     //entityからdtoへの変換
     public LocationSearchDto convertToLocationSearchDto() {
@@ -10,12 +15,7 @@ public class LocationSearch {
         return locationSearchDto;
     }
 
-    private String corner;
-    private String locationName;
-    private String place;
-    private String creator;
-
-    public LocationSearch(String corner, String locationName, String place, String creator) {
+    public Location(String corner, String locationName, String place, String creator) {
         this.corner = corner;
         this.locationName = locationName;
         this.place = place;
