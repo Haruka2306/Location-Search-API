@@ -1,11 +1,13 @@
 package com.example.crudapi.mapper;
 
-import com.example.crudapi.entity.LocationSearch;
+import com.example.crudapi.entity.Location;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.Optional;
 
 @Mapper
 public interface LocationSearchMapper {
     @Select("SELECT * FROM locationsearch WHERE corner = #{corner}")
-    LocationSearch findByCorner(String corner);
+    Optional<Location> findByCorner(String corner);
 }

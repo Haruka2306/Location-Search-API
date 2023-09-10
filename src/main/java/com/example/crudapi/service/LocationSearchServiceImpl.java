@@ -1,8 +1,11 @@
 package com.example.crudapi.service;
 
-import com.example.crudapi.entity.LocationSearch;
+import com.example.crudapi.entity.Location;
+import com.example.crudapi.exception.NoCornerFoundException;
 import com.example.crudapi.mapper.LocationSearchMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class LocationSearchServiceImpl implements LocationSearchService {
@@ -13,7 +16,9 @@ public class LocationSearchServiceImpl implements LocationSearchService {
     }
 
     @Override
-    public LocationSearch findByCorner(String corner) {
-        return locationSearchMapper.findByCorner(corner);
+    public Location findByCorner(String corner) {
+        Optional<Location> locationSearch = locationSearchMapper.findByCorner(corner);
+        //該当cornerがDBに無い場合は例外とする
+        return locationSearch.orElseThrow(() -> new NoCornerFoundException(0, "No record found for corner"));
     }
 }

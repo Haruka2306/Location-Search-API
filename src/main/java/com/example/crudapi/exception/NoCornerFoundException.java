@@ -1,9 +1,9 @@
 package com.example.crudapi.exception;
 
-public class CustomExceptionHandler extends RuntimeException {
+public class NoCornerFoundException extends RuntimeException {
     private int code;
 
-    public CustomExceptionHandler(int code, String message) {
+    public NoCornerFoundException(int code, String message) {
         super(message);
         this.code = code;
     }
