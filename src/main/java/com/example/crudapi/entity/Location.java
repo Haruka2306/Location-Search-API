@@ -58,17 +58,10 @@ public class Location {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Location)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
-        return corner == location.corner
-                && Objects.equals(locationName, location.locationName)
-                && Objects.equals(place, location.place)
-                && Objects.equals(creator, location.creator);
+        return Objects.equals(corner, location.corner) && Objects.equals(locationName, location.locationName) && Objects.equals(place, location.place) && Objects.equals(creator, location.creator);
     }
 
     @Override
