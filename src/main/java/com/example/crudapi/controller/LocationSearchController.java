@@ -25,5 +25,3 @@ public class LocationSearchController {
         return new LocationSearchResponse(location.convertToLocationSearchDto());
     }
 }
-
-

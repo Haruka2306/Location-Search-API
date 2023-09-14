@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Mapper
 public interface LocationSearchMapper {
-    @Select("SELECT * FROM locationsearch WHERE corner = #{corner}")
+    @Select("SELECT * FROM location WHERE corner = #{corner}")
     Optional<Location> findByCorner(String corner);
 }
