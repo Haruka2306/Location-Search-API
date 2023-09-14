@@ -42,9 +42,5 @@ class LocationSearchServiceImplTest {
 
         assertThatThrownBy(() -> locationSearchServiceImpl.findByCorner("i")).isInstanceOfSatisfying(NoCornerFoundException.class, e -> assertThat(e.getMessage()).isEqualTo("No record found for corner"));
         verify(locationSearchMapper, times(1)).findByCorner("i");
-
-
     }
-
-
 }
