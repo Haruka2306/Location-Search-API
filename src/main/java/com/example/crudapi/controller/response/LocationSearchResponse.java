@@ -1,7 +1,9 @@
 package com.example.crudapi.controller.response;
 
 import com.example.crudapi.dto.LocationSearchDto;
+import lombok.Getter;
 
+@Getter
 public class LocationSearchResponse {
 
     private String corner;
@@ -12,17 +14,5 @@ public class LocationSearchResponse {
         this.corner = locationSearchDto.getCorner();
         this.locationName = locationSearchDto.getLocationName();
         this.place = locationSearchDto.getPlace();
-    }
-
-    public String getCorner() {
-        return corner;
-    }
-
-    public String getLocationName() {
-        return locationName;
-    }
-
-    public String getPlace() {
-        return place;
     }
 }

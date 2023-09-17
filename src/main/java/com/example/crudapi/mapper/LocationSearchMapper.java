@@ -1,7 +1,9 @@
 package com.example.crudapi.mapper;
 
 import com.example.crudapi.entity.Location;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.Optional;
@@ -10,4 +12,8 @@ import java.util.Optional;
 public interface LocationSearchMapper {
     @Select("SELECT * FROM location WHERE corner = #{corner}")
     Optional<Location> findByCorner(String corner);
+
+    @Insert("INSERT INTO location(corner, locationName, place, creator) VALUES(#{corner}, #{locationName}, #{place}, #{creator})")
+    @Options(useGeneratedKeys = true, keyProperty = "corner")
+    void insertLocation(Location location);
 }

@@ -4,8 +4,8 @@ CREATE TABLE location (
   id int unsigned AUTO_INCREMENT,
   corner VARCHAR(20) NOT NULL,
   locationName VARCHAR(1) NOT NULL,
-  place VARCHAR(15) NOT NULL,
-  creator VARCHAR(15) NOT NULL,
+  place VARCHAR(20) NOT NULL,
+  creator VARCHAR(20) NOT NULL,
   PRIMARY KEY(id)
 );
 
