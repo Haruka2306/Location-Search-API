@@ -6,7 +6,8 @@ CREATE TABLE location (
   locationName VARCHAR(1) NOT NULL,
   place VARCHAR(20) NOT NULL,
   creator VARCHAR(20) NOT NULL,
-  PRIMARY KEY(id)
+  PRIMARY KEY(id),
+  UNIQUE KEY(corner)
 );
 
 INSERT INTO location (corner, locationName, place, creator) VALUES ("food", "A", "left-back", "yamada");

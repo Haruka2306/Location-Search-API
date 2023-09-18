@@ -5,6 +5,7 @@ import com.example.crudapi.entity.Location;
 import com.example.crudapi.exception.DuplicateCornerException;
 import com.example.crudapi.exception.NoCornerFoundException;
 import com.example.crudapi.mapper.LocationSearchMapper;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,7 +29,7 @@ public class LocationSearchServiceImpl implements LocationSearchService {
     public Location createLocation(Locationform form) {
         try {
             locationSearchMapper.insertLocation(form.convertToLocation());
-        } catch (DuplicateCornerException e) {
+        } catch (DuplicateKeyException e) {
             throw new DuplicateCornerException(form.convertToLocation().getCorner() + "is already created");
         }
         return form.convertToLocation();

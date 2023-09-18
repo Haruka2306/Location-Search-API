@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.dao.DuplicateKeyException;
 
 import java.util.Optional;
 
@@ -62,7 +63,7 @@ class LocationSearchServiceImplTest {
     @Test
     public void insertLocationメソッドでDuplicateCornerExceptionがスローされること() {
         Location location = new Location("Duplicate Corner", "G", "right-front", "tanaka");
-        doThrow(new DuplicateCornerException("Duplicate Corner")).when(locationSearchMapper).insertLocation(location);
+        doThrow(new DuplicateKeyException("Duplicate Corner")).when(locationSearchMapper).insertLocation(location);
 
         assertThrows(DuplicateCornerException.class, () -> {
             locationSearchServiceImpl.createLocation(new Locationform("Duplicate Corner", "G", "right-front", "tanaka"));

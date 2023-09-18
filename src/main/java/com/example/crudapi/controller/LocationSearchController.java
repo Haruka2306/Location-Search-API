@@ -37,7 +37,7 @@ public class LocationSearchController {
     public ResponseEntity<Map<String, String>> createLocation(@RequestBody @Validated Locationform form, UriComponentsBuilder uriBuilder) {
         Location location = locationSearchService.createLocation(form);
         URI url = uriBuilder
-                .path("/location-search/" + location.getCreator())
+                .path("/location-search/" + location.getCorner())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "location successfully created"));
