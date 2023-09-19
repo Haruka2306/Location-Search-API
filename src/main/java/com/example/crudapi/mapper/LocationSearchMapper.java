@@ -14,6 +14,6 @@ public interface LocationSearchMapper {
     Optional<Location> findByCorner(String corner);
 
     @Insert("INSERT INTO location(corner, locationName, place, creator) VALUES(#{corner}, #{locationName}, #{place}, #{creator})")
-    @Options(useGeneratedKeys = true, keyProperty = "corner")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertLocation(Location location);
 }

@@ -1,7 +1,6 @@
 package com.example.crudapi.entity;
 
 import com.example.crudapi.dto.LocationSearchDto;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,13 +8,21 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class Location {
 
+    private int id;
     private String corner;
     private String locationName;
     private String place;
     private String creator;
+
+    public Location(String corner, String locationName, String place, String creator) {
+        this.id = 0;
+        this.corner = corner;
+        this.locationName = locationName;
+        this.place = place;
+        this.creator = creator;
+    }
 
     //entityからdtoへの変換
     public LocationSearchDto convertToLocationSearchDto() {

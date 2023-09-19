@@ -30,7 +30,7 @@ public class LocationSearchServiceImpl implements LocationSearchService {
         try {
             locationSearchMapper.insertLocation(form.convertToLocation());
         } catch (DuplicateKeyException e) {
-            throw new DuplicateCornerException(form.convertToLocation().getCorner() + "is already created");
+            throw new DuplicateCornerException(form.convertToLocation().getCorner() + " is already created");
         }
         return form.convertToLocation();
     }
