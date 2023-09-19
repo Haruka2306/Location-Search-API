@@ -23,7 +23,7 @@ public class LocationSearchMapperTest {
     LocationSearchMapper locationSearchMapper;
 
     @Test
-    @DataSet(value = "datasets/location.yml")
+    @DataSet(value = "datasets/locations.yml")
     @Transactional
     void 指定したcorner名のlocationが取得できること() {
         assertThat(locationSearchMapper.findByCorner("food")).contains(
@@ -32,14 +32,14 @@ public class LocationSearchMapperTest {
     }
 
     @Test
-    @DataSet(value = "datasets/location.yml")
+    @DataSet(value = "datasets/locations.yml")
     @Transactional
     void 指定したcorner名が存在しないときにOptionalが返されること() {
         assertThat(locationSearchMapper.findByCorner("i")).isEmpty();
     }
 
     @Test
-    @DataSet(value = "datasets/location.yml")
+    @DataSet(value = "datasets/locations.yml")
     @ExpectedDataSet(value = "datasets/insert_location.yml", ignoreCols = "corner")
     @Transactional
     void 新規のcornerを登録できること() {
@@ -48,7 +48,7 @@ public class LocationSearchMapperTest {
     }
 
     @Test
-    @DataSet(value = "datasets/location.yml")
+    @DataSet(value = "datasets/locations.yml")
     @Transactional
     void 既に登録されているcorner名が新規登録で渡された場合にDuplicateKeyExceptionにスローされること() {
         Location location = new Location("toy", "G", "right-front", "tanaka");

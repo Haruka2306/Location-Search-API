@@ -1,7 +1,7 @@
 package com.example.crudapi.service;
 
 
-import com.example.crudapi.controller.form.Locationform;
+import com.example.crudapi.controller.form.LocationForm;
 import com.example.crudapi.entity.Location;
 import com.example.crudapi.exception.DuplicateCornerException;
 import com.example.crudapi.exception.NoCornerFoundException;
@@ -52,7 +52,7 @@ class LocationSearchServiceImplTest {
 
     @Test
     public void formから取得した内容でlocationが登録できること() {
-        Locationform form = new Locationform("game", "G", "right-front", "tanaka");
+        LocationForm form = new LocationForm("game", "G", "right-front", "tanaka");
         Location expectedLocation = new Location("game", "G", "right-front", "tanaka");
         doNothing().when(locationSearchMapper).insertLocation(expectedLocation);
 
@@ -66,7 +66,7 @@ class LocationSearchServiceImplTest {
         doThrow(new DuplicateKeyException("Duplicate Corner")).when(locationSearchMapper).insertLocation(location);
 
         assertThrows(DuplicateCornerException.class, () -> {
-            locationSearchServiceImpl.createLocation(new Locationform("Duplicate Corner", "G", "right-front", "tanaka"));
+            locationSearchServiceImpl.createLocation(new LocationForm("Duplicate Corner", "G", "right-front", "tanaka"));
         });
         verify(locationSearchMapper, times(1)).insertLocation(location);
     }

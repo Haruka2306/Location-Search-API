@@ -1,10 +1,8 @@
 package com.example.crudapi.dto;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class LocationSearchDto {
     private String corner;
     private String locationName;

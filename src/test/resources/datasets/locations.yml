@@ -1,4 +1,4 @@
-location:
+locations:
   - corner: "food"
     locationName: "A"
     place: "left-back"

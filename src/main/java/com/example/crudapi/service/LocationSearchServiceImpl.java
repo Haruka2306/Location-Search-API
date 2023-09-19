@@ -1,6 +1,6 @@
 package com.example.crudapi.service;
 
-import com.example.crudapi.controller.form.Locationform;
+import com.example.crudapi.controller.form.LocationForm;
 import com.example.crudapi.entity.Location;
 import com.example.crudapi.exception.DuplicateCornerException;
 import com.example.crudapi.exception.NoCornerFoundException;
@@ -26,7 +26,7 @@ public class LocationSearchServiceImpl implements LocationSearchService {
     }
 
     @Override
-    public Location createLocation(Locationform form) {
+    public Location createLocation(LocationForm form) {
         try {
             locationSearchMapper.insertLocation(form.convertToLocation());
         } catch (DuplicateKeyException e) {

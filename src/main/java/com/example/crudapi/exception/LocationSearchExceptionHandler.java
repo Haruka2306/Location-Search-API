@@ -23,7 +23,7 @@ public class LocationSearchExceptionHandler extends ResponseEntityExceptionHandl
     }
 
     @ExceptionHandler(NoCornerFoundException.class)
-    public ResponseEntity<Map<String, String>> badRequestException(NoCornerFoundException e, HttpServletRequest request) {
+    public ResponseEntity<Map<String, String>> handleNoCornerFoundException(NoCornerFoundException e, HttpServletRequest request) {
         Map<String, String> body = Map.of(
                 "status", String.valueOf(HttpStatus.BAD_REQUEST.value()),
                 "error", HttpStatus.BAD_REQUEST.getReasonPhrase(),
@@ -33,7 +33,7 @@ public class LocationSearchExceptionHandler extends ResponseEntityExceptionHandl
     }
 
     @ExceptionHandler(DuplicateCornerException.class)
-    public ResponseEntity<Map<String, String>> badRequestException(DuplicateCornerException e, HttpServletRequest request) {
+    public ResponseEntity<Map<String, String>> handleDuplicationCornerException(DuplicateCornerException e, HttpServletRequest request) {
         Map<String, String> body = Map.of(
                 "status", String.valueOf(HttpStatus.BAD_REQUEST.value()),
                 "error", HttpStatus.BAD_REQUEST.getReasonPhrase(),

@@ -1,6 +1,6 @@
 package com.example.crudapi.controller;
 
-import com.example.crudapi.controller.form.Locationform;
+import com.example.crudapi.controller.form.LocationForm;
 import com.example.crudapi.controller.response.LocationSearchResponse;
 import com.example.crudapi.entity.Location;
 import com.example.crudapi.service.LocationSearchService;
@@ -27,17 +27,17 @@ public class LocationSearchController {
         this.locationSearchService = locationSearchService;
     }
 
-    @GetMapping("/location-search")
+    @GetMapping("/locations")
     public LocationSearchResponse findByCorner(@RequestParam("corner") @NotBlank String corner) {
         Location location = locationSearchService.findByCorner(corner);
         return new LocationSearchResponse(location.convertToLocationSearchDto());
     }
 
-    @PostMapping("/location-search")
-    public ResponseEntity<Map<String, String>> createLocation(@RequestBody @Validated Locationform form, UriComponentsBuilder uriBuilder) {
+    @PostMapping("/locations")
+    public ResponseEntity<Map<String, String>> createLocation(@RequestBody @Validated LocationForm form, UriComponentsBuilder uriBuilder) {
         Location location = locationSearchService.createLocation(form);
         URI url = uriBuilder
-                .path("/location-search/" + location.getCorner())
+                .path("/locations/" + location.getCorner())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "location successfully created"));

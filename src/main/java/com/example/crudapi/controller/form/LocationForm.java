@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Locationform {
+public class LocationForm {
     @Size(max = 20, message = "Please enter up to 20 characters")
     @NotBlank(message = "required item")
     private String corner;
