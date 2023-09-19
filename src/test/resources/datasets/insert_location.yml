@@ -1,4 +1,4 @@
-location:
+locations:
   - corner: "food"
     locationName: "A"
     place: "left-back"
@@ -28,3 +28,9 @@ location:
     locationName: "F"
     place: "right-front"
     creator: "yamada"
+
+  - corner: "game"
+    locationName: "G"
+    place: "right-front"
+    creator: "tanaka"
+

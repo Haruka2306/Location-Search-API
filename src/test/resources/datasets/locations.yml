@@ -1,0 +1,30 @@
+locations:
+  - corner: "food"
+    locationName: "A"
+    place: "left-back"
+    creator: "yamada"
+
+  - corner: "drink"
+    locationName: "B"
+    place: "center-back"
+    creator: "yamada"
+
+  - corner: "daily-necessities"
+    locationName: "C"
+    place: "right-back"
+    creator: "yamada"
+
+  - corner: "electric-appliances"
+    locationName: "D"
+    place: "left-front"
+    creator: "yamada"
+
+  - corner: "outdoor-product"
+    locationName: "E"
+    place: "center-front"
+    creator: "yamada"
+
+  - corner: "toy"
+    locationName: "F"
+    place: "right-front"
+    creator: "yamada"
