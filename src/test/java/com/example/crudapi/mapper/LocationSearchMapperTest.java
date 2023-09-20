@@ -27,7 +27,7 @@ public class LocationSearchMapperTest {
     @Transactional
     void 指定したcorner名のlocationが取得できること() {
         assertThat(locationSearchMapper.findByCorner("food")).contains(
-                new LocationDto("food", "A", "left-back", "yamada")
+                new LocationDto("food", "A", "left-back", "yamada", "2023/08/01")
         );
     }
 
@@ -43,7 +43,7 @@ public class LocationSearchMapperTest {
     @ExpectedDataSet(value = "datasets/insert_location.yml", ignoreCols = "corner")
     @Transactional
     void 新規のcornerを登録できること() {
-        LocationDto locationDto = new LocationDto("game", "G", "right-front", "tanaka");
+        LocationDto locationDto = new LocationDto("game", "G", "right-front", "tanaka", "2023/09/01");
         locationSearchMapper.insertLocation(locationDto);
     }
 
@@ -51,16 +51,16 @@ public class LocationSearchMapperTest {
     @DataSet(value = "datasets/locations.yml")
     @Transactional
     void 既に登録されているcorner名が新規登録で渡された場合にDuplicateKeyExceptionにスローされること() {
-        LocationDto locationDto = new LocationDto("toy", "G", "right-front", "tanaka");
+        LocationDto locationDto = new LocationDto("toy", "G", "right-front", "tanaka", "2023/09/01");
         assertThrows(DuplicateKeyException.class, () -> locationSearchMapper.insertLocation(locationDto));
     }
-    
+
     @Test
     @DataSet(value = "datasets/locations.yml")
     @ExpectedDataSet(value = "datasets/update_location.yml")
     @Transactional
     void 指定したcorner名のLocationが更新できること() {
-        LocationDto locationDto = new LocationDto("toy", "H", "2F-right-front", "suzuki");
+        LocationDto locationDto = new LocationDto("toy", "H", "2F-right-front", "suzuki", "2023/09/08");
         locationSearchMapper.updateLocation(locationDto);
     }
 }

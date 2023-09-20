@@ -35,10 +35,10 @@ class LocationSearchServiceImplTest {
 
     @Test
     public void 存在するcorner名を指定した時にMappernのfindByCornerメソッドが呼び出されること() {
-        doReturn(Optional.of(new LocationDto("food", "A", "left-back", "yamada"))).when(locationSearchMapper).findByCorner("food");
+        doReturn(Optional.of(new LocationDto("food", "A", "left-back", "yamada", "2023/08/01"))).when(locationSearchMapper).findByCorner("food");
 
         LocationDto actual = locationSearchServiceImpl.findByCorner("food");
-        assertThat(actual).isEqualTo(new LocationDto("food", "A", "left-back", "yamada"));
+        assertThat(actual).isEqualTo(new LocationDto("food", "A", "left-back", "yamada", "2023/08/01"));
         verify(locationSearchMapper, times(1)).findByCorner("food");
     }
 
@@ -52,8 +52,8 @@ class LocationSearchServiceImplTest {
 
     @Test
     public void formから取得した内容でlocationが登録できること() {
-        LocationForm form = new LocationForm("game", "G", "right-front", "tanaka");
-        LocationDto expectedLocation = new LocationDto("game", "G", "right-front", "tanaka");
+        LocationForm form = new LocationForm("game", "G", "right-front", "tanaka", "2023/09/01");
+        LocationDto expectedLocation = new LocationDto("game", "G", "right-front", "tanaka", "2023/09/01");
         doNothing().when(locationSearchMapper).insertLocation(expectedLocation);
 
         assertThat(locationSearchServiceImpl.createLocation(form)).isEqualTo(expectedLocation);
@@ -62,11 +62,11 @@ class LocationSearchServiceImplTest {
 
     @Test
     public void insertLocationメソッドでDuplicateCornerExceptionがスローされること() {
-        LocationDto locationDto = new LocationDto("Duplicate Corner", "G", "right-front", "tanaka");
+        LocationDto locationDto = new LocationDto("Duplicate Corner", "G", "right-front", "tanaka", "2023/09/01");
         doThrow(new DuplicateKeyException("Duplicate Corner")).when(locationSearchMapper).insertLocation(locationDto);
 
         assertThrows(DuplicateCornerException.class, () -> {
-            locationSearchServiceImpl.createLocation(new LocationForm("Duplicate Corner", "G", "right-front", "tanaka"));
+            locationSearchServiceImpl.createLocation(new LocationForm("Duplicate Corner", "G", "right-front", "tanaka", "2023/09/01"));
         });
         verify(locationSearchMapper, times(1)).insertLocation(locationDto);
     }

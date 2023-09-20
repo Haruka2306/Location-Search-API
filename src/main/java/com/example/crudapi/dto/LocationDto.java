@@ -13,13 +13,15 @@ public class LocationDto {
     private String locationName;
     private String place;
     private String creator;
+    private String dateCreated;
 
-    public LocationDto(String corner, String locationName, String place, String creator) {
+    public LocationDto(String corner, String locationName, String place, String creator, String dateCreated) {
         this.id = 0;
         this.corner = corner;
         this.locationName = locationName;
         this.place = place;
         this.creator = creator;
+        this.dateCreated = dateCreated;
     }
 
     @Override
@@ -27,11 +29,11 @@ public class LocationDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LocationDto that = (LocationDto) o;
-        return Objects.equals(corner, that.corner) && Objects.equals(locationName, that.locationName) && Objects.equals(place, that.place) && Objects.equals(creator, that.creator);
+        return Objects.equals(corner, that.corner) && Objects.equals(locationName, that.locationName) && Objects.equals(place, that.place) && Objects.equals(creator, that.creator) && Objects.equals(dateCreated, that.dateCreated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(corner, locationName, place, creator);
+        return Objects.hash(corner, locationName, place, creator, dateCreated);
     }
 }

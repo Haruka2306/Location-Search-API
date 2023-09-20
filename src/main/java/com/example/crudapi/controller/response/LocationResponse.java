@@ -12,11 +12,13 @@ public class LocationResponse {
     private String locationName;
     private String place;
     private String creator;
+    private String dateCreated;
 
     public LocationResponse(LocationDto locationDto) {
         this.corner = locationDto.getCorner();
         this.locationName = locationDto.getLocationName();
         this.place = locationDto.getPlace();
         this.creator = locationDto.getCreator();
+        this.dateCreated = locationDto.getDateCreated();
     }
 }
