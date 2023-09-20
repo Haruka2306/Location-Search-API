@@ -14,4 +14,5 @@ public class Location {
     private String locationName;
     private String place;
     private String creator;
+    private String dateCreated;
 }

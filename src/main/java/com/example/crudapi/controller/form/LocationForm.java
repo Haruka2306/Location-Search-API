@@ -26,9 +26,13 @@ public class LocationForm {
     @NotBlank(message = "required item")
     private String creator;
 
+    @Pattern(regexp = "[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])", message = "date created format is not appropriate")
+    @NotBlank(message = "required item")
+    private String dateCreated;
+
     //formからdtoへ変換
     public LocationDto convertToLocationDto() {
-        LocationDto locationDto = new LocationDto(corner, locationName, place, creator);
+        LocationDto locationDto = new LocationDto(corner, locationName, place, creator, dateCreated);
         return locationDto;
     }
 }
