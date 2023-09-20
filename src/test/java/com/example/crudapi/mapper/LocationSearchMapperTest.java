@@ -1,6 +1,6 @@
 package com.example.crudapi.mapper;
 
-import com.example.crudapi.entity.Location;
+import com.example.crudapi.dto.LocationDto;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
@@ -27,7 +27,7 @@ public class LocationSearchMapperTest {
     @Transactional
     void 指定したcorner名のlocationが取得できること() {
         assertThat(locationSearchMapper.findByCorner("food")).contains(
-                new Location("food", "A", "left-back", "yamada")
+                new LocationDto("food", "A", "left-back", "yamada")
         );
     }
 
@@ -43,15 +43,15 @@ public class LocationSearchMapperTest {
     @ExpectedDataSet(value = "datasets/insert_location.yml", ignoreCols = "corner")
     @Transactional
     void 新規のcornerを登録できること() {
-        Location location = new Location("game", "G", "right-front", "tanaka");
-        locationSearchMapper.insertLocation(location);
+        LocationDto locationDto = new LocationDto("game", "G", "right-front", "tanaka");
+        locationSearchMapper.insertLocation(locationDto);
     }
 
     @Test
     @DataSet(value = "datasets/locations.yml")
     @Transactional
     void 既に登録されているcorner名が新規登録で渡された場合にDuplicateKeyExceptionにスローされること() {
-        Location location = new Location("toy", "G", "right-front", "tanaka");
-        assertThrows(DuplicateKeyException.class, () -> locationSearchMapper.insertLocation(location));
+        LocationDto locationDto = new LocationDto("toy", "G", "right-front", "tanaka");
+        assertThrows(DuplicateKeyException.class, () -> locationSearchMapper.insertLocation(locationDto));
     }
 }
