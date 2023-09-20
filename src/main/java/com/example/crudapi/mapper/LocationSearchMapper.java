@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.Optional;
 
@@ -16,4 +17,7 @@ public interface LocationSearchMapper {
     @Insert("INSERT INTO locations(corner, locationName, place, creator) VALUES(#{corner}, #{locationName}, #{place}, #{creator})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertLocation(LocationDto locationDto);
+
+    @Update("UPDATE locations SET locationName = #{locationName}, place = #{place}, creator = #{creator} WHERE corner = #{corner}")
+    void updateLocation(LocationDto locationDto);
 }
