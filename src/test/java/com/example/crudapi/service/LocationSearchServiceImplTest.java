@@ -2,7 +2,7 @@ package com.example.crudapi.service;
 
 
 import com.example.crudapi.controller.form.LocationForm;
-import com.example.crudapi.entity.Location;
+import com.example.crudapi.dto.LocationDto;
 import com.example.crudapi.exception.DuplicateCornerException;
 import com.example.crudapi.exception.NoCornerFoundException;
 import com.example.crudapi.mapper.LocationSearchMapper;
@@ -35,10 +35,10 @@ class LocationSearchServiceImplTest {
 
     @Test
     public void 存在するcorner名を指定した時にMappernのfindByCornerメソッドが呼び出されること() {
-        doReturn(Optional.of(new Location("food", "A", "left-back", "yamada"))).when(locationSearchMapper).findByCorner("food");
+        doReturn(Optional.of(new LocationDto("food", "A", "left-back", "yamada"))).when(locationSearchMapper).findByCorner("food");
 
-        Location actual = locationSearchServiceImpl.findByCorner("food");
-        assertThat(actual).isEqualTo(new Location("food", "A", "left-back", "yamada"));
+        LocationDto actual = locationSearchServiceImpl.findByCorner("food");
+        assertThat(actual).isEqualTo(new LocationDto("food", "A", "left-back", "yamada"));
         verify(locationSearchMapper, times(1)).findByCorner("food");
     }
 
@@ -53,7 +53,7 @@ class LocationSearchServiceImplTest {
     @Test
     public void formから取得した内容でlocationが登録できること() {
         LocationForm form = new LocationForm("game", "G", "right-front", "tanaka");
-        Location expectedLocation = new Location("game", "G", "right-front", "tanaka");
+        LocationDto expectedLocation = new LocationDto("game", "G", "right-front", "tanaka");
         doNothing().when(locationSearchMapper).insertLocation(expectedLocation);
 
         assertThat(locationSearchServiceImpl.createLocation(form)).isEqualTo(expectedLocation);
@@ -62,12 +62,12 @@ class LocationSearchServiceImplTest {
 
     @Test
     public void insertLocationメソッドでDuplicateCornerExceptionがスローされること() {
-        Location location = new Location("Duplicate Corner", "G", "right-front", "tanaka");
-        doThrow(new DuplicateKeyException("Duplicate Corner")).when(locationSearchMapper).insertLocation(location);
+        LocationDto locationDto = new LocationDto("Duplicate Corner", "G", "right-front", "tanaka");
+        doThrow(new DuplicateKeyException("Duplicate Corner")).when(locationSearchMapper).insertLocation(locationDto);
 
         assertThrows(DuplicateCornerException.class, () -> {
             locationSearchServiceImpl.createLocation(new LocationForm("Duplicate Corner", "G", "right-front", "tanaka"));
         });
-        verify(locationSearchMapper, times(1)).insertLocation(location);
+        verify(locationSearchMapper, times(1)).insertLocation(locationDto);
     }
 }

@@ -1,8 +1,8 @@
 package com.example.crudapi.controller;
 
 import com.example.crudapi.controller.form.LocationForm;
-import com.example.crudapi.controller.response.LocationSearchResponse;
-import com.example.crudapi.entity.Location;
+import com.example.crudapi.controller.response.LocationResponse;
+import com.example.crudapi.dto.LocationDto;
 import com.example.crudapi.service.LocationSearchService;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
@@ -28,16 +28,16 @@ public class LocationSearchController {
     }
 
     @GetMapping("/locations")
-    public LocationSearchResponse findByCorner(@RequestParam("corner") @NotBlank String corner) {
-        Location location = locationSearchService.findByCorner(corner);
-        return new LocationSearchResponse(location.convertToLocationSearchDto());
+    public LocationResponse findByCorner(@RequestParam("corner") @NotBlank String corner) {
+        LocationDto locationDto = locationSearchService.findByCorner(corner);
+        return new LocationResponse(locationDto);
     }
 
     @PostMapping("/locations")
     public ResponseEntity<Map<String, String>> createLocation(@RequestBody @Validated LocationForm form, UriComponentsBuilder uriBuilder) {
-        Location location = locationSearchService.createLocation(form);
+        LocationDto locationDto = locationSearchService.createLocation(form);
         URI url = uriBuilder
-                .path("/locations/" + location.getCorner())
+                .path("/locations/" + locationDto.getCorner())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "location successfully created"));

@@ -1,10 +1,10 @@
 package com.example.crudapi.service;
 
 import com.example.crudapi.controller.form.LocationForm;
-import com.example.crudapi.entity.Location;
+import com.example.crudapi.dto.LocationDto;
 
 public interface LocationSearchService {
-    Location findByCorner(String corner);
+    LocationDto findByCorner(String corner);
 
-    Location createLocation(LocationForm form);
+    LocationDto createLocation(LocationForm form);
 }

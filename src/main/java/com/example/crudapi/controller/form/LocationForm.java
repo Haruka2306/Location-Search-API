@@ -1,6 +1,6 @@
 package com.example.crudapi.controller.form;
 
-import com.example.crudapi.entity.Location;
+import com.example.crudapi.dto.LocationDto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -26,8 +26,9 @@ public class LocationForm {
     @NotBlank(message = "required item")
     private String creator;
 
-    public Location convertToLocation() {
-        Location location = new Location(corner, locationName, place, creator);
-        return location;
+    //formからdtoへ変換
+    public LocationDto convertToLocationSearchDto() {
+        LocationDto locationDto = new LocationDto(corner, locationName, place, creator);
+        return locationDto;
     }
 }

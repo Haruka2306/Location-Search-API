@@ -1,7 +1,7 @@
 package com.example.crudapi.service;
 
 import com.example.crudapi.controller.form.LocationForm;
-import com.example.crudapi.entity.Location;
+import com.example.crudapi.dto.LocationDto;
 import com.example.crudapi.exception.DuplicateCornerException;
 import com.example.crudapi.exception.NoCornerFoundException;
 import com.example.crudapi.mapper.LocationSearchMapper;
@@ -19,19 +19,19 @@ public class LocationSearchServiceImpl implements LocationSearchService {
     }
 
     @Override
-    public Location findByCorner(String corner) {
-        Optional<Location> locationSearch = locationSearchMapper.findByCorner(corner);
+    public LocationDto findByCorner(String corner) {
+        Optional<LocationDto> locationSearch = locationSearchMapper.findByCorner(corner);
         //該当cornerがDBに無い場合は例外とする
         return locationSearch.orElseThrow(() -> new NoCornerFoundException(0, "No record found for corner"));
     }
 
     @Override
-    public Location createLocation(LocationForm form) {
+    public LocationDto createLocation(LocationForm form) {
         try {
-            locationSearchMapper.insertLocation(form.convertToLocation());
+            locationSearchMapper.insertLocation(form.convertToLocationSearchDto());
         } catch (DuplicateKeyException e) {
-            throw new DuplicateCornerException(form.convertToLocation().getCorner() + " is already created");
+            throw new DuplicateCornerException(form.convertToLocationSearchDto().getCorner() + " is already created");
         }
-        return form.convertToLocation();
+        return form.convertToLocationSearchDto();
     }
 }
