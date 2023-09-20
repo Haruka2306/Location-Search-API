@@ -27,7 +27,7 @@ public class LocationForm {
     private String creator;
 
     //formからdtoへ変換
-    public LocationDto convertToLocationSearchDto() {
+    public LocationDto convertToLocationDto() {
         LocationDto locationDto = new LocationDto(corner, locationName, place, creator);
         return locationDto;
     }

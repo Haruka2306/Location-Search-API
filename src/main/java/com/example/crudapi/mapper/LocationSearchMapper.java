@@ -18,6 +18,6 @@ public interface LocationSearchMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertLocation(LocationDto locationDto);
 
-    @Update("UPDATE locations SET locationName = #{locationName}, place = #{place}, creator = #{creator}" + "WHERE corner = #{corner}")
+    @Update("UPDATE locations SET locationName = #{locationName}, place = #{place}, creator = #{creator} WHERE corner = #{corner}")
     void updateLocation(LocationDto locationDto);
 }

@@ -28,10 +28,10 @@ public class LocationSearchServiceImpl implements LocationSearchService {
     @Override
     public LocationDto createLocation(LocationForm form) {
         try {
-            locationSearchMapper.insertLocation(form.convertToLocationSearchDto());
+            locationSearchMapper.insertLocation(form.convertToLocationDto());
         } catch (DuplicateKeyException e) {
-            throw new DuplicateCornerException(form.convertToLocationSearchDto().getCorner() + " is already created");
+            throw new DuplicateCornerException(form.convertToLocationDto().getCorner() + " is already created");
         }
-        return form.convertToLocationSearchDto();
+        return form.convertToLocationDto();
     }
 }
