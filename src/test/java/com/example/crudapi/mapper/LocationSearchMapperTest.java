@@ -54,4 +54,13 @@ public class LocationSearchMapperTest {
         LocationDto locationDto = new LocationDto("toy", "G", "right-front", "tanaka");
         assertThrows(DuplicateKeyException.class, () -> locationSearchMapper.insertLocation(locationDto));
     }
+    
+    @Test
+    @DataSet(value = "datasets/locations.yml")
+    @ExpectedDataSet(value = "datasets/update_location.yml")
+    @Transactional
+    void 指定したcorner名のLocationが更新できること() {
+        LocationDto locationDto = new LocationDto("toy", "H", "2F-right-front", "suzuki");
+        locationSearchMapper.updateLocation(locationDto);
+    }
 }
