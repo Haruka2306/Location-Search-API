@@ -77,21 +77,21 @@ class LocationSearchServiceImplTest {
         doReturn(Optional.of(new LocationForm("toy", "H", "2F-right-front", "suzuki", "2023/09/08")
                 .convertToLocationDto())).when(locationSearchMapper).findByCorner("toy");
 
-        locationSearchServiceImpl.updateLocation(new LocationForm("toy", "H", "2F-right-front", "suzuki", "2023/09/08"));
+        locationSearchServiceImpl.updateLocation(new LocationDto("toy", "H", "2F-right-front", "suzuki", "2023/09/08"));
 
         verify(locationSearchMapper, times(1)).findByCorner("toy");
-        verify(locationSearchMapper, times(1)).updateLocation(new LocationForm("toy", "H", "2F-right-front", "suzuki", "2023/09/08").convertToLocationDto());
+        verify(locationSearchMapper, times(1)).updateLocation(new LocationDto("toy", "H", "2F-right-front", "suzuki", "2023/09/08"));
     }
 
     @Test
     public void 更新対象のcornerが存在しない場合に例外がスローされること() {
         doReturn(Optional.empty()).when(locationSearchMapper).findByCorner("music");
 
-        assertThatThrownBy(() -> locationSearchServiceImpl.updateLocation(new LocationForm("music", "H", "2F-right-front", "suzuki", "2023/09/08")))
+        assertThatThrownBy(() -> locationSearchServiceImpl.updateLocation(new LocationDto("music", "H", "2F-right-front", "suzuki", "2023/09/08")))
                 .isInstanceOfSatisfying(NoCornerFoundException.class, e -> {
                     assertThat(e.getMessage()).isEqualTo("No record found for corner");
                 });
         verify(locationSearchMapper, times(1)).findByCorner("music");
-        verify(locationSearchMapper, never()).updateLocation(new LocationForm("music", "H", "2F-right-front", "suzuki", "2023/09/08").convertToLocationDto());
+        verify(locationSearchMapper, never()).updateLocation(new LocationDto("music", "H", "2F-right-front", "suzuki", "2023/09/08"));
     }
 }

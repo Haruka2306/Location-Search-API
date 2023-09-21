@@ -8,5 +8,5 @@ public interface LocationSearchService {
 
     LocationDto createLocation(LocationForm form);
 
-    void updateLocation(LocationForm form);
+    void updateLocation(LocationDto locationDto);
 }

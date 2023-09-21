@@ -22,7 +22,7 @@ public class LocationSearchServiceImpl implements LocationSearchService {
     public LocationDto findByCorner(String corner) {
         Optional<LocationDto> locationSearch = locationSearchMapper.findByCorner(corner);
         //該当cornerがDBに無い場合は例外とする
-        return locationSearch.orElseThrow(() -> new NoCornerFoundException(0, "No record found for corner"));
+        return locationSearch.orElseThrow(() -> new NoCornerFoundException("No record found for corner"));
     }
 
     @Override
@@ -36,8 +36,8 @@ public class LocationSearchServiceImpl implements LocationSearchService {
     }
 
     @Override
-    public void updateLocation(LocationForm form) {
-        locationSearchMapper.findByCorner(form.getCorner()).orElseThrow(() -> new NoCornerFoundException(0, "No record found for corner"));
-        locationSearchMapper.updateLocation(form.convertToLocationDto());
+    public void updateLocation(LocationDto locationDto) {
+        locationSearchMapper.findByCorner(locationDto.getCorner()).orElseThrow(() -> new NoCornerFoundException("No record found for corner"));
+        locationSearchMapper.updateLocation(locationDto);
     }
 }
