@@ -7,4 +7,6 @@ public interface LocationSearchService {
     LocationDto findByCorner(String corner);
 
     LocationDto createLocation(LocationForm form);
+
+    void updateLocation(LocationForm form);
 }

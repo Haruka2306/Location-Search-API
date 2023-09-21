@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -69,5 +70,28 @@ class LocationSearchServiceImplTest {
             locationSearchServiceImpl.createLocation(new LocationForm("Duplicate Corner", "G", "right-front", "tanaka", "2023/09/01"));
         });
         verify(locationSearchMapper, times(1)).insertLocation(locationDto);
+    }
+
+    @Test
+    public void formから取得した内容でLocationを更新できること() {
+        doReturn(Optional.of(new LocationForm("toy", "H", "2F-right-front", "suzuki", "2023/09/08")
+                .convertToLocationDto())).when(locationSearchMapper).findByCorner("toy");
+
+        locationSearchServiceImpl.updateLocation(new LocationForm("toy", "H", "2F-right-front", "suzuki", "2023/09/08"));
+
+        verify(locationSearchMapper, times(1)).findByCorner("toy");
+        verify(locationSearchMapper, times(1)).updateLocation(new LocationForm("toy", "H", "2F-right-front", "suzuki", "2023/09/08").convertToLocationDto());
+    }
+
+    @Test
+    public void 更新対象のcornerが存在しない場合に例外がスローされること() {
+        doReturn(Optional.empty()).when(locationSearchMapper).findByCorner("music");
+
+        assertThatThrownBy(() -> locationSearchServiceImpl.updateLocation(new LocationForm("music", "H", "2F-right-front", "suzuki", "2023/09/08")))
+                .isInstanceOfSatisfying(NoCornerFoundException.class, e -> {
+                    assertThat(e.getMessage()).isEqualTo("No record found for corner");
+                });
+        verify(locationSearchMapper, times(1)).findByCorner("music");
+        verify(locationSearchMapper, never()).updateLocation(new LocationForm("music", "H", "2F-right-front", "suzuki", "2023/09/08").convertToLocationDto());
     }
 }

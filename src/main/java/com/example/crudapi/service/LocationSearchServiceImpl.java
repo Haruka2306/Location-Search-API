@@ -34,4 +34,10 @@ public class LocationSearchServiceImpl implements LocationSearchService {
         }
         return form.convertToLocationDto();
     }
+
+    @Override
+    public void updateLocation(LocationForm form) {
+        locationSearchMapper.findByCorner(form.getCorner()).orElseThrow(() -> new NoCornerFoundException(0, "No record found for corner"));
+        locationSearchMapper.updateLocation(form.convertToLocationDto());
+    }
 }
