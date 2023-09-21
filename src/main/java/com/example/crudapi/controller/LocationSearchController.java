@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,5 +42,11 @@ public class LocationSearchController {
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "location successfully created"));
+    }
+
+    @PatchMapping("/locations")
+    public ResponseEntity<Map<String, String>> updateLocation(@RequestParam("corner") String corner, @RequestBody @Validated LocationForm form) {
+        locationSearchService.updateLocation(form.convertToLocationDto());
+        return ResponseEntity.ok(Map.of("message", "location successfully updated"));
     }
 }
