@@ -16,7 +16,10 @@
   
 
 ## API概略図
-![Location-Search-API drawio (2)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/6c63ec64-3362-459e-aab5-e74e56e4499b)
+![Location-Search-API drawio (6)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/07d337e7-3d9e-4d03-811c-54009ce088c4)
+
+
+
 
 
 
