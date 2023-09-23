@@ -1,6 +1,7 @@
 package com.example.crudapi.mapper;
 
 import com.example.crudapi.dto.LocationDto;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -20,4 +21,7 @@ public interface LocationSearchMapper {
 
     @Update("UPDATE locations SET locationName = #{locationName}, place = #{place}, creator = #{creator}, dateCreated = #{dateCreated} WHERE corner = #{corner}")
     void updateLocation(LocationDto locationDto);
+
+    @Delete("DELETE FROM locations WHERE corner = #{corner}")
+    void deleteLocation(String corner);
 }

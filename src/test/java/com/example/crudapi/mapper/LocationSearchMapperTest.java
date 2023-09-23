@@ -63,4 +63,12 @@ public class LocationSearchMapperTest {
         LocationDto locationDto = new LocationDto("toy", "H", "2F-right-front", "suzuki", "2023/09/08");
         locationSearchMapper.updateLocation(locationDto);
     }
+
+    @Test
+    @DataSet(value = "datasets/locations.yml")
+    @ExpectedDataSet(value = "datasets/delete_location.yml")
+    @Transactional
+    void 指定したcorner名を削除できること() {
+        locationSearchMapper.deleteLocation("outdoor-product");
+    }
 }
