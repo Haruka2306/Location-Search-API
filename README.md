@@ -24,31 +24,64 @@
 
 
 ## DB登録済みデータ
-| id | corner | locationName | place | creator|
-| ---- | ---- | ---- | ---- |----|
-| 1 | food | A | left-back | yamada |
-| 2 | drink | B | center-back | yamada |
-| 3 | daily-necessities | C | right-back | yamada |
-| 4 | electronic-appliances | D | left-front | yamada |
-| 5 | outdoor-product | E | center-front | yamada |
-| 6 | toy | F | right-front | yamada |
+| id | corner | locationName | place | creator| dateCreated|
+| ---- | ---- | ---- | ---- |----|----|
+| 1 | food | A | left-back | yamada | 2023/08/01 |
+| 2 | drink | B | center-back | yamada | 2023/08/01 |
+| 3 | daily-necessities | C | right-back | yamada | 2023/08/01 |
+| 4 | electronic-appliances | D | left-front | yamada | 2023/08/01 |
+| 5 | outdoor-product | E | center-front | yamada | 2023/08/01 |
+| 6 | toy | F | right-front | yamada | 2023/08/01 |
 
 
 ## 動作確認
-* 検索したcorner名に紐づいたlocationNameとplaceを取得する。
-####
-     curl --location 'http://localhost:8080/location-search?corner=food'
-![location-search-get200](https://github.com/Haruka2306/Location-Search-API/assets/137120436/96ac3c34-dab7-433c-b988-c0d847488ab2)
+<details>
+<summary>POST実行</summary>
+<div>
+  
+ ####
+     curl --location --request POST 'http://localhost:8080/locations'
 
-* corner名が空白の場合、400 BadRequestを返す
-####
-     curl --location 'http://localhost:8080/location-search?corner='
-![location-search-get-NotBlank400](https://github.com/Haruka2306/Location-Search-API/assets/137120436/07ee3026-cfd3-4004-8a17-47cba81c67d7)
+ ![task-final-post](https://github.com/Haruka2306/Location-Search-API/assets/137120436/8a56d973-3ff2-4f70-a714-de05e17a2888)
+ 
+</div>
+</details>
 
-* DBに登録されていないcorner名が検索された場合、400 BadRequestを返す
-####
-     curl --location 'http://localhost:8080/location-search?corner=i'
-![location-search-get-CustomException400](https://github.com/Haruka2306/Location-Search-API/assets/137120436/f471b8da-b559-4056-97b6-135f6c32e22e)
+<details>
+<summary>POST実行確認</summary>
+<div>
+  
+ ####
+     curl --location 'http://localhost:8080/locations/game'
+
+ ![task-final-post確認](https://github.com/Haruka2306/Location-Search-API/assets/137120436/804fba8e-7acd-4b0b-963f-1b4e4a0f6b50)
+
+</div>
+</details>
+
+<details>
+<summary>PATCH実行</summary>
+<div>
+  
+ ####
+     curl --location --request PATCH 'http://localhost:8080/locations/toy'
+
+![task-final-patch](https://github.com/Haruka2306/Location-Search-API/assets/137120436/c13d418d-65b6-42cf-ac19-f5dec8dbea19)
+
+</div>
+</details>
+
+<details>
+<summary>PATCH実行確認</summary>
+<div>
+  
+ ####
+     curl --location 'http://localhost:8080/locations/toy'
+
+![task-final-patch確認](https://github.com/Haruka2306/Location-Search-API/assets/137120436/2a6087a3-2c3f-4d81-ba23-cf78f38140fe)
+
+</div>
+</details>
 
 ### 今後の展望
 * 登録、更新、削除機能の実装
