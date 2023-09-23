@@ -9,4 +9,6 @@ public interface LocationSearchService {
     LocationDto createLocation(LocationForm form);
 
     void updateLocation(LocationDto locationDto);
+
+    void deleteLocation(String corner);
 }

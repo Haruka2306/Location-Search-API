@@ -40,4 +40,10 @@ public class LocationSearchServiceImpl implements LocationSearchService {
         locationSearchMapper.findByCorner(locationDto.getCorner()).orElseThrow(() -> new NoCornerFoundException("No record found for corner"));
         locationSearchMapper.updateLocation(locationDto);
     }
+
+    @Override
+    public void deleteLocation(String corner) {
+        locationSearchMapper.findByCorner(corner).orElseThrow(() -> new NoCornerFoundException("No record found for corner"));
+        locationSearchMapper.deleteLocation(corner);
+    }
 }

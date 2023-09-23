@@ -94,4 +94,25 @@ class LocationSearchServiceImplTest {
         verify(locationSearchMapper, times(1)).findByCorner("music");
         verify(locationSearchMapper, never()).updateLocation(new LocationDto("music", "H", "2F-right-front", "suzuki", "2023/09/08"));
     }
+
+    @Test
+    public void 存在するcornerのLocationを削除できること() {
+        doReturn(Optional.of(new LocationDto("outdoor-product", "E", "center-front", "yamada", "2023/08/01"))).when(locationSearchMapper).findByCorner("outdoor-product");
+
+        locationSearchServiceImpl.deleteLocation("outdoor-product");
+        verify(locationSearchMapper, times(1)).findByCorner("outdoor-product");
+        verify(locationSearchMapper, times(1)).deleteLocation("outdoor-product");
+    }
+
+    @Test
+    public void 削除対象のcornerが存在しない場合に例外がスローされること() {
+        doReturn(Optional.empty()).when(locationSearchMapper).findByCorner("music");
+
+        assertThatThrownBy(() -> locationSearchServiceImpl.deleteLocation("music"))
+                .isInstanceOfSatisfying(NoCornerFoundException.class, e -> {
+                    assertThat(e.getMessage()).isEqualTo("No record found for corner");
+                });
+        verify(locationSearchMapper, times(1)).findByCorner("music");
+        verify(locationSearchMapper, never()).deleteLocation("music");
+    }
 }
