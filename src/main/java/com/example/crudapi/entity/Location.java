@@ -11,8 +11,8 @@ public class Location {
 
     private int id;
     private String corner;
-    private String locationName;
+    private String location_name;
     private String place;
     private String creator;
-    private String dateCreated;
+    private String date_created;
 }

@@ -9,16 +9,16 @@ import lombok.Getter;
 public class LocationResponse {
 
     private String corner;
-    private String locationName;
+    private String location_name;
     private String place;
     private String creator;
-    private String dateCreated;
+    private String date_created;
 
     public LocationResponse(LocationDto locationDto) {
         this.corner = locationDto.getCorner();
-        this.locationName = locationDto.getLocationName();
+        this.location_name = locationDto.getLocation_name();
         this.place = locationDto.getPlace();
         this.creator = locationDto.getCreator();
-        this.dateCreated = locationDto.getDateCreated();
+        this.date_created = locationDto.getDate_created();
     }
 }
