@@ -24,7 +24,7 @@
 
 
 ## DB登録済みデータ
-| id | corner | locationName | place | creator| dateCreated|
+| id | corner | location_name | place | creator| date_created|
 | ---- | ---- | ---- | ---- |----|----|
 | 1 | food | A | left-back | yamada | 2023/08/01 |
 | 2 | drink | B | center-back | yamada | 2023/08/01 |
@@ -40,9 +40,10 @@
 <div>
   
  ####
-     curl --location --request POST 'http://localhost:8080/locations'
+     curl --location 'http://localhost:8080/locations'
 
- ![task-final-post](https://github.com/Haruka2306/Location-Search-API/assets/137120436/8a56d973-3ff2-4f70-a714-de05e17a2888)
+ ![location_post](https://github.com/Haruka2306/Location-Search-API/assets/137120436/53c037ec-4795-46b5-beac-3b712a3fe93b)
+
  
 </div>
 </details>
@@ -54,7 +55,7 @@
  ####
      curl --location 'http://localhost:8080/locations/game'
 
- ![task-final-post確認](https://github.com/Haruka2306/Location-Search-API/assets/137120436/804fba8e-7acd-4b0b-963f-1b4e4a0f6b50)
+![location_post-check](https://github.com/Haruka2306/Location-Search-API/assets/137120436/5097835d-ff0a-4efb-a7e2-d56bbe043ebc)
 
 </div>
 </details>
@@ -66,7 +67,7 @@
  ####
      curl --location --request PATCH 'http://localhost:8080/locations/toy'
 
-![task-final-patch](https://github.com/Haruka2306/Location-Search-API/assets/137120436/c13d418d-65b6-42cf-ac19-f5dec8dbea19)
+![location_patch](https://github.com/Haruka2306/Location-Search-API/assets/137120436/31c305eb-0ee4-4f03-8fe8-9af92df604c4)
 
 </div>
 </details>
@@ -78,7 +79,31 @@
  ####
      curl --location 'http://localhost:8080/locations/toy'
 
-![task-final-patch確認](https://github.com/Haruka2306/Location-Search-API/assets/137120436/2a6087a3-2c3f-4d81-ba23-cf78f38140fe)
+![location_patch-check](https://github.com/Haruka2306/Location-Search-API/assets/137120436/85d35f83-0df6-47c3-86e0-9713a4dbaf43)
+
+</div>
+</details>
+
+<details>
+<summary>DELETE実行</summary>
+<div>
+  
+ ####
+     curl --location --request DELETE 'http://localhost:8080/locations/outdoor-product'
+
+![location_delete](https://github.com/Haruka2306/Location-Search-API/assets/137120436/f0588a0d-92a9-455d-9f30-e4cea39297c0)
+
+</div>
+</details>
+
+<details>
+<summary>DELETE実行確認</summary>
+<div>
+  
+ ####
+     curl --location 'http://localhost:8080/locations/outdoor-product'
+
+![location_delete-check](https://github.com/Haruka2306/Location-Search-API/assets/137120436/2c6e2576-b13d-47dd-854c-48e1a6f1c0b5)
 
 </div>
 </details>
