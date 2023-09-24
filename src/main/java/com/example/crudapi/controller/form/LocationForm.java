@@ -16,7 +16,7 @@ public class LocationForm {
 
     @Pattern(regexp = "[A-Z]{1}", message = "Please enter in one capital letter of the alphabet")
     @NotBlank(message = "required item")
-    private String locationName;
+    private String location_name;
 
     @Size(max = 20, message = "Please enter up to 20 characters")
     @NotBlank(message = "required item")
@@ -28,11 +28,11 @@ public class LocationForm {
 
     @Pattern(regexp = "[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])", message = "date created format is not appropriate")
     @NotBlank(message = "required item")
-    private String dateCreated;
+    private String date_created;
 
     //formからdtoへ変換
     public LocationDto convertToLocationDto() {
-        LocationDto locationDto = new LocationDto(corner, locationName, place, creator, dateCreated);
+        LocationDto locationDto = new LocationDto(corner, location_name, place, creator, date_created);
         return locationDto;
     }
 }
