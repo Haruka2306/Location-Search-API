@@ -9,7 +9,7 @@
 そこで、商品の位置情報検索機能を持つ簡単なアプリを自作しようと思った。
 
 ## API仕様書
-[SwaggerによるAPI仕様書はこちら](http://localhost:63342/crudapi/docs/index.html)
+[SwaggerによるAPI仕様書はこちら]((https://haruka2306.github.io/Location-Search-API/dist/index.html))
 
 ## API概略図
 ![Location-Search-API drawio (6)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/07d337e7-3d9e-4d03-811c-54009ce088c4)
