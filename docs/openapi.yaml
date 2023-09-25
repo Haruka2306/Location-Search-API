@@ -1,0 +1,243 @@
+openapi: "3.0.3"
+info:
+  title: Location Search API
+  description: |-
+    商品の位置情報管理アプリのAPI仕様書です。
+  version: 1.0.11
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: locations
+    description: 商品cornerの位置情報管理に関する操作
+paths:
+  /locations:
+    post:
+      tags:
+        - locations
+      summary: 新規cornerの位置情報登録
+      description: cornerの位置情報を新たに登録する
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                corner:
+                  type: string
+                  nullable: false
+                  example: game
+                location_name:
+                  type: string
+                  example: G
+                place:
+                  type: string
+                  example: right-front
+                creator:
+                  type: string
+                  example: tanaka
+                date_created:
+                  type: string
+                  example: 2023/09/01
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: location successfully created
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+
+  /locations/{corner}:
+    get:
+      tags:
+        - locations
+      summary: 指定したcornerの位置情報の取得
+      description: 指定したcornerのlocationを取得する。
+      parameters:
+        - name: corner
+          in: path
+          description: 取得したいcorner名
+          required: true
+          schema:
+            type: String
+          example: food
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  corner:
+                    type: string
+                    example: food
+                  location_name:
+                    type: string
+                    example: A
+                  place:
+                    type: string
+                    example: left-back
+                  creator:
+                    type: string
+                    example: yamada
+                  date_created:
+                    type: string
+                    example: 2023/08/01
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+    patch:
+      tags:
+        - locations
+      summary: 指定したcornerの位置情報の更新
+      description: 指定したcornerのlocation情報を更新する。
+      parameters:
+        - name: corner
+          in: path
+          description: locationを更新したいcorner名
+          required: true
+          schema:
+            type: String
+          example: toy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                corner:
+                  type: string
+                  nullable: false
+                  example: toy
+                location_name:
+                  type: string
+                  example: H
+                place:
+                  type: string
+                  example: 2F-right-front
+                creator:
+                  type: string
+                  example: suzuki
+                date_created:
+                  type: string
+                  example: 2023/09/08
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: location successfully updated
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+    delete:
+      tags:
+        - locations
+      summary: cornerの削除
+      description: 指定したcornerのlocationを削除する。
+      parameters:
+        - name: corner
+          in: path
+          description: 削除したいcorner名
+          required: true
+          schema:
+            type: string
+          example: outdoor-product
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: location successfully deleted
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+components:
+  schemas:
+    NotFound:
+      description: 指定したリソースが存在しない場合のレスポンス
+      type: object
+      properties:
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: No record found for corner
+        path:
+          type: string
+          example: 指定したパス
+
+    Conflict:
+      description: 既に登録済みのリソースを新規登録しようとした場合のレスポンス
+      type: object
+      properties:
+        error:
+          type: string
+          example: Conflict
+        message:
+          type: string
+          example: 指定したcorner名 is already created
+        path:
+          type: string
+          example: 指定したパス
+
+    BadRequest:
+      description: Location情報に関するリクエストボディに不備がある場合のレスポンス
+      type: object
+      properties:
+        error:
+          type: string
+          example: BadRequest
+        message:
+          type: string
+          example: 適切な形式で入力してください。
+        path:
+          type: string
+          example: 指定したパス
