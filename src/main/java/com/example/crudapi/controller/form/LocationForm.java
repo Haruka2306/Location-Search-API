@@ -26,7 +26,7 @@ public class LocationForm {
     @NotBlank(message = "required item")
     private String creator;
 
-    @Pattern(regexp = "[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])", message = "date created format is not appropriate")
+    @Pattern(regexp = "[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])", message = "Please enter in yyyy/mm/dd")
     @NotBlank(message = "required item")
     private String date_created;
 
