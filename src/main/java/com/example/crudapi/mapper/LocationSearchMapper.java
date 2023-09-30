@@ -15,11 +15,11 @@ public interface LocationSearchMapper {
     @Select("SELECT * FROM locations WHERE corner = #{corner}")
     Optional<LocationDto> findByCorner(String corner);
 
-    @Insert("INSERT INTO locations(corner, location_name, place, creator, date_created) VALUES(#{corner}, #{location_name}, #{place}, #{creator}, #{date_created})")
+    @Insert("INSERT INTO locations(corner, location_name, place, creator, date_created) VALUES(#{corner}, #{location_name}, #{place}, #{creator}, #{dateCreated})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertLocation(LocationDto locationDto);
 
-    @Update("UPDATE locations SET location_name = #{location_name}, place = #{place}, creator = #{creator}, date_created = #{date_created} WHERE corner = #{corner}")
+    @Update("UPDATE locations SET location_name = #{location_name}, place = #{place}, creator = #{creator}, date_created = #{dateCreated} WHERE corner = #{corner}")
     void updateLocation(LocationDto locationDto);
 
     @Delete("DELETE FROM locations WHERE corner = #{corner}")

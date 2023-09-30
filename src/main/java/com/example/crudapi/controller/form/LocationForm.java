@@ -1,6 +1,7 @@
 package com.example.crudapi.controller.form;
 
 import com.example.crudapi.dto.LocationDto;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -28,11 +29,12 @@ public class LocationForm {
 
     @Pattern(regexp = "[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])", message = "Please enter in yyyy/mm/dd")
     @NotBlank(message = "required item")
-    private String date_created;
+    @JsonProperty("date_created")
+    private String dateCreated;
 
     //formからdtoへ変換
     public LocationDto convertToLocationDto() {
-        LocationDto locationDto = new LocationDto(corner, location_name, place, creator, date_created);
+        LocationDto locationDto = new LocationDto(corner, location_name, place, creator, dateCreated);
         return locationDto;
     }
 }
