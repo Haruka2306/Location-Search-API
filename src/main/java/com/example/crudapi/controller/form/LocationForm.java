@@ -12,7 +12,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class LocationForm {
     @Size(max = 20, message = "Please enter up to 20 characters")
-    @NotBlank(message = "required item")
+    @NotBlank(message = "Please enter")
     private String corner;
 
     @Pattern(regexp = "[A-Z]{1}", message = "Please enter in one capital letter of the alphabet")
@@ -20,11 +20,11 @@ public class LocationForm {
     private String locationName;
 
     @Size(max = 20, message = "Please enter up to 20 characters")
-    @NotBlank(message = "required item")
+    @NotBlank(message = "Please enter")
     private String place;
 
     @Size(max = 20, message = "Please enter up to 20 characters")
-    @NotBlank(message = "required item")
+    @NotBlank(message = "Please enter")
     @JsonProperty("created_by")
     private String createdBy;
 
