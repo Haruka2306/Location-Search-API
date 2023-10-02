@@ -13,15 +13,16 @@ public class LocationResponse {
     @JsonProperty("location_name")
     private String locationName;
     private String place;
-    private String creator;
-    @JsonProperty("date_created")
-    private String dateCreated;
+    @JsonProperty("created_by")
+    private String createdBy;
+    @JsonProperty("created_date")
+    private String createdDate;
 
     public LocationResponse(LocationDto locationDto) {
         this.corner = locationDto.getCorner();
         this.locationName = locationDto.getLocationName();
         this.place = locationDto.getPlace();
-        this.creator = locationDto.getCreator();
-        this.dateCreated = locationDto.getDateCreated();
+        this.createdBy = locationDto.getCreatedBy();
+        this.createdDate = locationDto.getCreatedDate();
     }
 }

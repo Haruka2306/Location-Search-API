@@ -33,10 +33,10 @@ paths:
                 place:
                   type: string
                   example: right-front
-                creator:
+                created_by:
                   type: string
                   example: tanaka
-                date_created:
+                created_date:
                   type: string
                   example: 2023/09/01
       responses:
@@ -94,10 +94,10 @@ paths:
                   place:
                     type: string
                     example: left-back
-                  creator:
+                  created_by:
                     type: string
                     example: yamada
-                  date_created:
+                  created_date:
                     type: string
                     example: 2023/08/01
         "404":
@@ -137,10 +137,10 @@ paths:
                 place:
                   type: string
                   example: 2F-right-front
-                creator:
+                created_by:
                   type: string
                   example: suzuki
-                date_created:
+                created_date:
                   type: string
                   example: 2023/09/08
       responses:

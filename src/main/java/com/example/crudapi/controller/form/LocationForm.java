@@ -25,15 +25,16 @@ public class LocationForm {
 
     @Size(max = 20, message = "Please enter up to 20 characters")
     @NotBlank(message = "required item")
-    private String creator;
+    @JsonProperty("created_by")
+    private String createdBy;
 
     @Pattern(regexp = "[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])", message = "Please enter in yyyy/mm/dd")
-    @JsonProperty("date_created")
-    private String dateCreated;
+    @JsonProperty("created_date")
+    private String createdDate;
 
     //formからdtoへ変換
     public LocationDto convertToLocationDto() {
-        LocationDto locationDto = new LocationDto(corner, locationName, place, creator, dateCreated);
+        LocationDto locationDto = new LocationDto(corner, locationName, place, createdBy, createdDate);
         return locationDto;
     }
 }
