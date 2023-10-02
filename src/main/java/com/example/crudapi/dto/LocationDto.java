@@ -1,5 +1,7 @@
 package com.example.crudapi.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,21 +9,24 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class LocationDto {
     private int id;
     private String corner;
-    private String location_name;
+    @JsonProperty("location_name")
+    private String locationName;
     private String place;
     private String creator;
-    private String date_created;
+    @JsonProperty("date_created")
+    private String dateCreated;
 
-    public LocationDto(String corner, String location_name, String place, String creator, String date_created) {
+    public LocationDto(String corner, String locationName, String place, String creator, String dateCreated) {
         this.id = 0;
         this.corner = corner;
-        this.location_name = location_name;
+        this.locationName = locationName;
         this.place = place;
         this.creator = creator;
-        this.date_created = date_created;
+        this.dateCreated = dateCreated;
     }
 
     @Override
@@ -29,11 +34,11 @@ public class LocationDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LocationDto that = (LocationDto) o;
-        return Objects.equals(corner, that.corner) && Objects.equals(location_name, that.location_name) && Objects.equals(place, that.place) && Objects.equals(creator, that.creator) && Objects.equals(date_created, that.date_created);
+        return Objects.equals(corner, that.corner) && Objects.equals(locationName, that.locationName) && Objects.equals(place, that.place) && Objects.equals(creator, that.creator) && Objects.equals(dateCreated, that.dateCreated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(corner, location_name, place, creator, date_created);
+        return Objects.hash(corner, locationName, place, creator, dateCreated);
     }
 }

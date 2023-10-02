@@ -1,5 +1,6 @@
 package com.example.crudapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +12,10 @@ public class Location {
 
     private int id;
     private String corner;
-    private String location_name;
+    @JsonProperty("location_name")
+    private String locationName;
     private String place;
     private String creator;
-    private String date_created;
+    @JsonProperty("date_created")
+    private String dateCreated;
 }
