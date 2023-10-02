@@ -16,8 +16,8 @@ public class LocationForm {
     private String corner;
 
     @Pattern(regexp = "[A-Z]{1}", message = "Please enter in one capital letter of the alphabet")
-    @NotBlank(message = "required item")
-    private String location_name;
+    @JsonProperty("location_name")
+    private String locationName;
 
     @Size(max = 20, message = "Please enter up to 20 characters")
     @NotBlank(message = "required item")
@@ -28,13 +28,12 @@ public class LocationForm {
     private String creator;
 
     @Pattern(regexp = "[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])", message = "Please enter in yyyy/mm/dd")
-    @NotBlank(message = "required item")
     @JsonProperty("date_created")
     private String dateCreated;
 
     //formからdtoへ変換
     public LocationDto convertToLocationDto() {
-        LocationDto locationDto = new LocationDto(corner, location_name, place, creator, dateCreated);
+        LocationDto locationDto = new LocationDto(corner, locationName, place, creator, dateCreated);
         return locationDto;
     }
 }

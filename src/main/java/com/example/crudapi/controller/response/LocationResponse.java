@@ -10,7 +10,8 @@ import lombok.Getter;
 public class LocationResponse {
 
     private String corner;
-    private String location_name;
+    @JsonProperty("location_name")
+    private String locationName;
     private String place;
     private String creator;
     @JsonProperty("date_created")
@@ -18,7 +19,7 @@ public class LocationResponse {
 
     public LocationResponse(LocationDto locationDto) {
         this.corner = locationDto.getCorner();
-        this.location_name = locationDto.getLocation_name();
+        this.locationName = locationDto.getLocationName();
         this.place = locationDto.getPlace();
         this.creator = locationDto.getCreator();
         this.dateCreated = locationDto.getDateCreated();

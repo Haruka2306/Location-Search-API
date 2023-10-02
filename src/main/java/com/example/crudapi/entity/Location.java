@@ -12,7 +12,8 @@ public class Location {
 
     private int id;
     private String corner;
-    private String location_name;
+    @JsonProperty("location_name")
+    private String locationName;
     private String place;
     private String creator;
     @JsonProperty("date_created")
