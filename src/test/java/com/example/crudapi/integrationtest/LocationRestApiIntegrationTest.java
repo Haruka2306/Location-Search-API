@@ -126,10 +126,10 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "corner": "Please enter",
+                          "corner": "Please enter any value",
                           "location_name": "Please enter in one capital letter of the alphabet",
-                          "place": "Please enter",
-                          "created_by": "Please enter",
+                          "place": "Please enter any value",
+                          "created_by": "Please enter any value",
                           "created_date": "Please enter in yyyy/mm/dd"
                       }
                     }
@@ -324,10 +324,10 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "corner": "Please enter",
+                          "corner": "Please enter any value",
                           "location_name": "Please enter in one capital letter of the alphabet",
-                          "place": "Please enter",
-                          "created_by": "Please enter",
+                          "place": "Please enter any value",
+                          "created_by": "Please enter any value",
                           "created_date": "Please enter in yyyy/mm/dd"
                       }
                     }
