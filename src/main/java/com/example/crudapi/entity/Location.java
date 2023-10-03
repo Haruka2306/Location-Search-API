@@ -15,7 +15,8 @@ public class Location {
     @JsonProperty("location_name")
     private String locationName;
     private String place;
-    private String creator;
-    @JsonProperty("date_created")
-    private String dateCreated;
+    @JsonProperty("created_by")
+    private String createdBy;
+    @JsonProperty("created_date")
+    private String createdDate;
 }

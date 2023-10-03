@@ -48,8 +48,8 @@ public class LocationRestApiIntegrationTest {
                        "corner": "food",
                        "location_name": "A",
                        "place": "left-back",
-                       "creator": "yamada",
-                       "date_created": "2023/08/01"
+                       "created_by": "yamada",
+                       "created_date": "2023/08/01"
                      }
                         """, response, JSONCompareMode.STRICT
             );
@@ -95,8 +95,8 @@ public class LocationRestApiIntegrationTest {
                                                "corner": "game",
                                                "location_name": "G",
                                                "place": "right-front",
-                                               "creator": "tanaka",
-                                               "date_created": "2023/09/01"
+                                               "created_by": "tanaka",
+                                               "created_date": "2023/09/01"
                                              }
                                             """))
                             .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -126,11 +126,11 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "corner": "required item",
+                          "corner": "Please enter any value",
                           "location_name": "Please enter in one capital letter of the alphabet",
-                          "place": "required item",
-                          "creator": "required item",
-                          "date_created": "Please enter in yyyy/mm/dd"
+                          "place": "Please enter any value",
+                          "created_by": "Please enter any value",
+                          "created_date": "Please enter in yyyy/mm/dd"
                       }
                     }
                     """, response, JSONCompareMode.STRICT);
@@ -182,7 +182,7 @@ public class LocationRestApiIntegrationTest {
 
         @Test
         @Transactional
-        void 新規登録時にcreatorが20文字以上で入力された場合にステータスコード400とエラーメッセージが返されること() throws Exception {
+        void 新規登録時にcreated_byが20文字以上で入力された場合にステータスコード400とエラーメッセージが返されること() throws Exception {
             LocationForm form = new LocationForm("game", "G", "right-front", "aaaaaaaaaaaaaaaaaaaaa", "2023/09/01");
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.post("/locations")
@@ -196,7 +196,7 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "creator": "Please enter up to 20 characters"
+                          "created_by": "Please enter up to 20 characters"
                       }
                     }
                     """, response, JSONCompareMode.STRICT);
@@ -226,7 +226,7 @@ public class LocationRestApiIntegrationTest {
 
         @Test
         @Transactional
-        void 新規登録時にdate_createdが指定した形式で入力されていない場合にステータスコード400とエラーメッセージが返されること() throws Exception {
+        void 新規登録時にcreated_dateが指定した形式で入力されていない場合にステータスコード400とエラーメッセージが返されること() throws Exception {
             LocationForm form = new LocationForm("game", "G", "right-front", "tanaka", "2023/09/012");
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.post("/locations")
@@ -240,7 +240,7 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "date_created": "Please enter in yyyy/mm/dd"
+                          "created_date": "Please enter in yyyy/mm/dd"
                       }
                     }
                     """, response, JSONCompareMode.STRICT);
@@ -258,8 +258,8 @@ public class LocationRestApiIntegrationTest {
                                                 "corner": "toy",
                                                 "location_name": "G",
                                                 "place": "right-front",
-                                                "creator": "tanaka",
-                                                "date_created": "2023/09/01"
+                                                "created_by": "tanaka",
+                                                "created_date": "2023/09/01"
                                               }
                                             """))
                             .andExpect(status().isConflict())
@@ -294,8 +294,8 @@ public class LocationRestApiIntegrationTest {
                                                 "corner": "toy",
                                                 "location_name": "H",
                                                 "place": "2F-right-front",
-                                                "creator": "suzuki",
-                                                "date_created": "2023/09/08"
+                                                "created_by": "suzuki",
+                                                "created_date": "2023/09/08"
                                               }
                                             """))
                             .andExpect(status().isOk())
@@ -324,11 +324,11 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "corner": "required item",
+                          "corner": "Please enter any value",
                           "location_name": "Please enter in one capital letter of the alphabet",
-                          "place": "required item",
-                          "creator": "required item",
-                          "date_created": "Please enter in yyyy/mm/dd"
+                          "place": "Please enter any value",
+                          "created_by": "Please enter any value",
+                          "created_date": "Please enter in yyyy/mm/dd"
                       }
                     }
                     """, response, JSONCompareMode.STRICT);
@@ -380,7 +380,7 @@ public class LocationRestApiIntegrationTest {
 
         @Test
         @Transactional
-        void 更新時にcreatorが20文字以上で入力された場合にステータスコード400とエラーメッセージが返されること() throws Exception {
+        void 更新時にcreated_byが20文字以上で入力された場合にステータスコード400とエラーメッセージが返されること() throws Exception {
             LocationForm form = new LocationForm("toy", "H", "2F-right-front", "aaaaaaaaaaaaaaaaaaaaa", "2023/09/08");
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.patch("/locations/toy")
@@ -394,7 +394,7 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "creator": "Please enter up to 20 characters"
+                          "created_by": "Please enter up to 20 characters"
                       }
                     }
                     """, response, JSONCompareMode.STRICT);
@@ -424,7 +424,7 @@ public class LocationRestApiIntegrationTest {
 
         @Test
         @Transactional
-        void 更新時にdate_createdが指定した形式で入力されていない場合にステータスコード400とエラーメッセージが返されること() throws Exception {
+        void 更新時にcreated_dateが指定した形式で入力されていない場合にステータスコード400とエラーメッセージが返されること() throws Exception {
             LocationForm form = new LocationForm("toy", "H", "2F-right-front", "suzuki", "20230908");
             String response =
                     mockMvc.perform(MockMvcRequestBuilders.patch("/locations/toy")
@@ -438,7 +438,7 @@ public class LocationRestApiIntegrationTest {
                       "status": "400",
                       "error": "Bad Request",
                       "message": {
-                          "date_created": "Please enter in yyyy/mm/dd"
+                          "created_date": "Please enter in yyyy/mm/dd"
                       }
                     }
                     """, response, JSONCompareMode.STRICT);
@@ -456,8 +456,8 @@ public class LocationRestApiIntegrationTest {
                                                 "corner": "music",
                                                 "location_name": "H",
                                                 "place": "2F-right-front",
-                                                "creator": "suzuki",
-                                                "date_created": "2023/09/08"
+                                                "created_by": "suzuki",
+                                                "created_date": "2023/09/08"
                                               }
                                             """))
 
