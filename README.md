@@ -21,7 +21,7 @@
 * Docker 24.0.5
   
 ## DB登録済みデータ
-| id | corner | location_name | place | creator| date_created|
+| id | corner | location_name | place | created_by| created_date|
 | ---- | ---- | ---- | ---- |----|----|
 | 1 | food | A | left-back | yamada | 2023/08/01 |
 | 2 | drink | B | center-back | yamada | 2023/08/01 |
