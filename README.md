@@ -19,7 +19,15 @@
 * Spring Boot 3.1.3
 * MySQL 8.0.34
 * Docker 24.0.5
-  
+
+## アプリケーション機能一覧
+| 機能 | 詳細 | 
+| ---- | ---- |
+| 検索 | cornerを指定して検索する |
+| 新規登録 | corner及び付随するlocationを新規登録する|
+| 修正 | 指定したcornerのlocation情報を修正する |
+| 削除 | 指定したcornerを削除する|
+ 
 ## DB登録済みデータ
 | id | corner | location_name | place | created_by| created_date|
 | ---- | ---- | ---- | ---- |----|----|
@@ -226,6 +234,14 @@
 
 </div>
 </details>
+
+## テスト
+以下のテストコードを実装。
+* 単体テスト
+  * LocationSearchServiceImpl
+  * LocationSearchMapper
+* 結合テスト
+  * LocationSearchController
 
 ### 今後の展望
 * 自動テスト
