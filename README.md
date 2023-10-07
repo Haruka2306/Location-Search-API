@@ -31,16 +31,16 @@
 | 修正 | 指定したcornerのlocation情報を修正する |/locations/{corner}
 | 削除 | 指定したcornerを削除する|/locations/{corner}
  
-## DB登録済みデータ
-| id | corner | location_name | place | created_by| created_date|
-| ---- | ---- | ---- | ---- |----|----|
-| 1 | food | A | left-back | yamada | 2023/08/01 |
-| 2 | drink | B | center-back | yamada | 2023/08/01 |
-| 3 | daily-necessities | C | right-back | yamada | 2023/08/01 |
-| 4 | electronic-appliances | D | left-front | yamada | 2023/08/01 |
-| 5 | outdoor-product | E | center-front | yamada | 2023/08/01 |
-| 6 | toy | F | right-front | yamada | 2023/08/01 |
-
+## DB定義
+テーブル名：locations
+|カラム名|データ型|キー|備考|
+| ---- | ---- | ---- | ----|
+| id | int | PRIMARY KEY|自動生成|
+| corner | VARCHAR(20) | UNIQUE KEY |
+| location_name | VARCHAR(1) ||英字大文字1字で入力|
+| place | VARCHAR(20) |
+| created_by | VARCHAR(20) |
+| created_date | VARCHAR(10) ||yyyy/mm/ddで入力|
 
 ## 動作確認
 <details>
@@ -231,7 +231,7 @@
 指定したcornerがDBに登録されていない場合
   
  ####
-     curl --location 'http://localhost:8080/locations'
+     curl --location 'http://localhost:8080/locations/music'
 
 ![delete-404](https://github.com/Haruka2306/Location-Search-API/assets/137120436/754d5932-0d04-4005-9737-b58c0adc1888)
 
@@ -255,8 +255,8 @@
 ### Discordへのテスト結果通知
 ![スクリーンショット 2023-10-07 232034](https://github.com/Haruka2306/Location-Search-API/assets/137120436/e428eee3-8714-408e-a4b8-c14829c7ef16)
 
-### 今後の展望
+## 今後の展望
 * Spring Security
 
-### 課題
+## 課題
 お客様向け（取得機能のみ）、従業員向け（取得、登録、更新、削除機能）で機能を分ける必要がある。
