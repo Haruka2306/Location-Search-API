@@ -1,5 +1,8 @@
 # Location-Search-API
 
+[![locationt-CI](https://github.com/Haruka2306/Location-Search-API/actions/workflows/ci.yml/badge.svg)](https://github.com/Haruka2306/Location-Search-API/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/Haruka2306/Location-Search-API/graph/badge.svg?token=YMP3W386RF)](https://codecov.io/gh/Haruka2306/Location-Search-API)
+
 ## API概要
 店舗で、探している商品が含まれるコーナー名を検索すると商品が置いてあるロケーション名とおおよその位置情報を知ることができます。
 
