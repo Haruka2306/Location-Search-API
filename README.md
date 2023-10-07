@@ -15,7 +15,7 @@
 [SwaggerによるAPI仕様書はこちら](https://haruka2306.github.io/Location-Search-API/)
 
 ## API概略図
-![Location-Search-API drawio (6)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/07d337e7-3d9e-4d03-811c-54009ce088c4)
+![Location-Search-API drawio (9)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/367bfeda-ace4-4fc3-a19b-244a44da43a3)
 
 ## 使用技術
 * Java 17
@@ -24,12 +24,12 @@
 * Docker 24.0.5
 
 ## アプリケーション機能一覧
-| 機能 | 詳細 | 
-| ---- | ---- |
-| 検索 | cornerを指定して検索する |
-| 新規登録 | corner及び付随するlocationを新規登録する|
-| 修正 | 指定したcornerのlocation情報を修正する |
-| 削除 | 指定したcornerを削除する|
+| 機能 | 詳細 | URL |
+| ---- | ---- |----|
+| 検索 | cornerを指定して検索する |/locations/{corner}
+| 新規登録 | corner及び付随するlocationを新規登録する|/locations|
+| 修正 | 指定したcornerのlocation情報を修正する |/locations/{corner}
+| 削除 | 指定したcornerを削除する|/locations/{corner}
  
 ## DB登録済みデータ
 | id | corner | location_name | place | created_by| created_date|
@@ -238,7 +238,8 @@
 </div>
 </details>
 
-## テスト
+## GitHub Actionsを使用したCIの実装
+### 自動テスト
 以下のテストコードを実装。
 * 単体テスト
   * LocationSearchServiceImpl
@@ -246,8 +247,15 @@
 * 結合テスト
   * LocationSearchController
 
+![スクリーンショット 2023-10-07 231015](https://github.com/Haruka2306/Location-Search-API/assets/137120436/d3a26bad-56ec-44da-a900-d3dbde289660)
+### Checkstyle
+### Codecov
+カバレッジ率
+![スクリーンショット 2023-10-07 204706](https://github.com/Haruka2306/Location-Search-API/assets/137120436/dc5f077d-3744-4e76-aa01-0f68a77e3755)
+### Discordへのテスト結果通知
+![スクリーンショット 2023-10-07 232034](https://github.com/Haruka2306/Location-Search-API/assets/137120436/e428eee3-8714-408e-a4b8-c14829c7ef16)
+
 ### 今後の展望
-* 自動テスト
 * Spring Security
 
 ### 課題
