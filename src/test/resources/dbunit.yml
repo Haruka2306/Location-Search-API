@@ -4,6 +4,6 @@ properties:
   schema: locationsearch_db
 caseInsensitiveStrategy: LOWERCASE
 connectionConfig:
-  url: "jdbc:mysql://localhost:3307/locationsearch_db"
+  url: "jdbc:mysql://localhost:3306/locationsearch_db"
   user: "user"
   password: "password"
