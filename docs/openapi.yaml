@@ -204,6 +204,9 @@ components:
       description: 指定したリソースが存在しない場合のレスポンス
       type: object
       properties:
+        status:
+          type: string
+          example: 404
         error:
           type: string
           example: Not Found
@@ -218,6 +221,9 @@ components:
       description: 既に登録済みのリソースを新規登録しようとした場合のレスポンス
       type: object
       properties:
+        status:
+          type: string
+          example: 409
         error:
           type: string
           example: Conflict
@@ -232,12 +238,21 @@ components:
       description: Location情報に関するリクエストボディに不備がある場合のレスポンス
       type: object
       properties:
+        status:
+          type: string
+          example: 400
         error:
           type: string
-          example: BadRequest
+          example: Bad Request
         message:
           type: string
-          example: 適切な形式で入力してください。
+          example: {
+            corner: "Please enter up to 20 characters", "Please enter any value",
+            location_name: "Please enter in one capital letter of the alphabet",
+            place: "Please enter up to 20 characters", "Please enter any value",
+            created_by: "Please enter up to 20 characters", "Please enter any value",
+            created_date: "Please enter in yyyy/mm/dd"
+          }
         path:
           type: string
           example: 指定したパス
