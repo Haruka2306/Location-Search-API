@@ -246,6 +246,42 @@
 
 ## インフラ構成図
 ![Location-Search-API-インフラ構成図 drawio](https://github.com/Haruka2306/Location-Search-API/assets/137120436/15ab8e60-d321-4778-a741-00f2914280f2)
+### 動作確認
+<details>
+<summary>GET実行</summary>
+<div>
+  
+![ec2-rds-get](https://github.com/Haruka2306/Location-Search-API/assets/137120436/add97034-cfed-45dc-a6df-feecccd21d9f)
+
+</div>
+</details>
+
+<details>
+<summary>POST実行</summary>
+<div>
+  
+![ec2-rds-post](https://github.com/Haruka2306/Location-Search-API/assets/137120436/207c6fe3-d8c2-4346-a627-41695c7a5354)
+
+</div>
+</details>
+
+<details>
+<summary>PATCH実行</summary>
+<div>
+  
+![ec2-rds-patch](https://github.com/Haruka2306/Location-Search-API/assets/137120436/16a549ad-90d4-47d6-8800-37f5514dba7e)
+
+</div>
+</details>
+
+<details>
+<summary>DELETE実行</summary>
+<div>
+  
+![ec2-rds-delete](https://github.com/Haruka2306/Location-Search-API/assets/137120436/8e5a0db0-35ce-45b9-9983-fd1f2348e6fb)
+
+</div>
+</details>
 
 ## GitHub Actionsを使用したCIの実装
 ### 自動テスト
