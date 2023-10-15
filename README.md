@@ -14,7 +14,7 @@
 ## API仕様書
 [SwaggerによるAPI仕様書はこちら](https://Haruka2306.github.io/Location-Search-API/)
 
-## API概略図
+## アプリケーション概略図
 ![Location-Search-API drawio (9)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/367bfeda-ace4-4fc3-a19b-244a44da43a3)
 
 ## 使用技術
@@ -243,6 +243,9 @@
 
 </div>
 </details>
+
+## インフラ構成図
+![Location-Search-API-インフラ構成図 drawio](https://github.com/Haruka2306/Location-Search-API/assets/137120436/15ab8e60-d321-4778-a741-00f2914280f2)
 
 ## GitHub Actionsを使用したCIの実装
 ### 自動テスト
