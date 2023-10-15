@@ -18,10 +18,16 @@
 ![Location-Search-API drawio (9)](https://github.com/Haruka2306/Location-Search-API/assets/137120436/367bfeda-ace4-4fc3-a19b-244a44da43a3)
 
 ## 使用技術
-* Java 17
-* Spring Boot 3.1.3
-* MySQL 8.0.34
-* Docker 24.0.5
+* バックエンド
+  * Java 17.0.8
+  * SpringBoot 3.1.3
+  * MyBatis
+* その他
+  * MySQL 8.0.34
+  * Docker 24.0.5
+  * 自動テスト
+  * CI（自動テスト、Checkstyle、Discordへの通知）
+  * AWSデプロイ
 
 ## アプリケーション機能一覧
 | 機能 | 詳細 | URL |
@@ -248,7 +254,6 @@
   * LocationSearchController
 
 ![スクリーンショット 2023-10-07 231015](https://github.com/Haruka2306/Location-Search-API/assets/137120436/d3a26bad-56ec-44da-a900-d3dbde289660)
-### Checkstyle
 ### Codecov
 カバレッジ率
 ![スクリーンショット 2023-10-07 204706](https://github.com/Haruka2306/Location-Search-API/assets/137120436/dc5f077d-3744-4e76-aa01-0f68a77e3755)
